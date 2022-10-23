@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->namapegawai }}</td>
-                                            <td>{{ $item->jabatan_id }}</td>
+                                            <td>{{ $item->jabatan->namajabatan }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>
                                                 <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-warning"><i
