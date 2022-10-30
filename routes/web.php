@@ -39,7 +39,7 @@ Route::group(['middleware'=>['auth']],function(){
 
 //route pegawai
 Route::resource('pegawai',App\Http\Controllers\PegawaiController::class)->middleware('auth');
-Route::get('pegawai/destroy/{id}',App\Http\Controllers\PegawaiController::class,'destroy')->name('pegawai.destroy');
+Route::get('pegawai/destroy/{id}',[App\Http\Controllers\PegawaiController::class,'destroy'])->name('pegawai.destroy');
 
 Auth::routes();
 
