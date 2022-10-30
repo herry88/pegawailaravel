@@ -33,13 +33,16 @@ Route::group(['middleware'=>['auth']],function(){
     //deelte
     Route::get('jabatan-destroy/destroy/{id}', [App\Http\Controllers\JabatanController::class, 'destroy'])->name('jabatan.destroy');
 
+    //route pegawai
+    Route::resource('pegawai',App\Http\Controllers\PegawaiController::class)->middleware('auth');
+    Route::get('pegawai/destroy/{id}',[App\Http\Controllers\PegawaiController::class,'destroy'])->name('pegawai.destroy');
+
+    //inventaris
+    Route::resource('inventaris', App\Http\Controllers\InvetarisController::class);
 });
 
 
 
-//route pegawai
-Route::resource('pegawai',App\Http\Controllers\PegawaiController::class)->middleware('auth');
-Route::get('pegawai/destroy/{id}',[App\Http\Controllers\PegawaiController::class,'destroy'])->name('pegawai.destroy');
 
 Auth::routes();
 

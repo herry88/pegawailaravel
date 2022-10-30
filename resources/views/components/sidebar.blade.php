@@ -15,5 +15,9 @@
             <a class="nav-link" href="{{ route('pegawai.index') }}"><i class="far fa-square"></i>
                 <span>Data Pegawai</span></a>
         </li>
+        <li class="active">
+            <a class="nav-link" href="{{ route('inventaris.index') }}"><i class="far fa-square"></i>
+                <span>Data Inventaris</span></a>
+        </li>
     </ul>
 </aside>
