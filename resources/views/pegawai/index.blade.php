@@ -39,7 +39,8 @@
                                             <td>
                                                 <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-warning"><i
                                                         class="fas fa-edit"></i></a>
-                                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                <a href="{{ route('pegawai.destroy', $item->id) }}"
+                                                    class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @empty
