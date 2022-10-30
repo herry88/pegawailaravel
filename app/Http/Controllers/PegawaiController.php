@@ -74,8 +74,8 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         //
-        $pegawai = Pegawai::findOrFail($id);
-        $jabatan = Jabatan::OrderBy("id","DESC")->get();
+        $pegawai = Pegawai::find($id);
+        $jabatan = Jabatan::all();
         return view('pegawai.edit', compact('pegawai','jabatan'));
 
     }
@@ -87,9 +87,21 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'namapegawai'=>'required',
+            'jabatan_id'=>'required',
+            'alamat'=>'required'
+        ]);
+        $pegawai = Pegawai::findOrFail($id);
+        $input = $request->all();
+        $update = $pegawai->update($input);
+        if ($update) {
+            return redirect()->route('pegawai.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -98,8 +110,10 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy($id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->delete();
+        return redirect()->back();
     }
 }
