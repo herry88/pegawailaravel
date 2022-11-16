@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invetaris;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class InvetarisController extends Controller
@@ -14,7 +15,9 @@ class InvetarisController extends Controller
      */
     public function index()
     {
-        return view('inventaris.index');
+        $data['inventaris'] =Invetaris::all();
+        $data['pegawai'] = Pegawai::all();
+        return view('inventaris.index', $data);
     }
 
     /**
@@ -24,7 +27,8 @@ class InvetarisController extends Controller
      */
     public function create()
     {
-        //
+        $data['pegawai'] = Pegawai::all();
+        return view('inventaris.create',$data);
     }
 
     /**
@@ -36,6 +40,7 @@ class InvetarisController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
